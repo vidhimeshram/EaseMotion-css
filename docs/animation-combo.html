@@ -285,18 +285,10 @@
       });
       durationInput.addEventListener("input", updateGenerated);
       delayInput.addEventListener("input", updateGenerated);
-      copyBtn.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(generatedCodeEl.textContent);
-
-          copyBtn.textContent = "Copied!";
-
-          setTimeout(() => {
-            copyBtn.textContent = "Copy";
-          }, 1500);
-        } catch (error) {
-          console.error("Failed to copy:", error);
-        }
+      copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(generatedCodeEl.textContent);
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
       });
 
       // Initial render
